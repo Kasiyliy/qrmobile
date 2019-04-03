@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Registration
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+
+        <ion-segment (ionChange)="segmentChange()">
+            <ion-segment-button>
+                <ion-label>Company</ion-label>
+            </ion-segment-button>
+            <ion-segment-button>
+                <ion-label>Fiz lico</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+
+
+            <ion-card-content *ngIf="isCompany">
+                <ion-label>Fiz lico</ion-label>
+                <ion-item>
+                    <ion-label position="floating">Username</ion-label>
+                    <ion-input></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input></ion-input>
+                </ion-item>
+            </ion-card-content>
+            <ion-card-content *ngIf="!isCompany">
+                <ion-label>Company</ion-label>
+                <ion-item>
+                    <ion-label position="floating">BIN</ion-label>
+                    <ion-input></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input></ion-input>
+                </ion-item>
+            </ion-card-content>
+
+
+        <ion-button expand="block">Register</ion-button>
+
+      <div style="float: right">
+        <ion-label>Already registered?</ion-label><ion-button size="small" routerDirection="back" routerLink="/" fill="clear">go to login</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <form action="#" class="ho-form ho-form-boxed" [formGroup]="loginForm">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="login()">Login</ion-button>
+
+      <div style="float: right">
+        <ion-label>Not registered?</ion-label><ion-button size="small" routerLink="/register" fill="clear">Register</ion-button>
+      </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
