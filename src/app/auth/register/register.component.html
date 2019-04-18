@@ -1,60 +1,83 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Registration
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Регистрация
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
+    <ion-card>
+        <ion-card-content>
 
-        <ion-segment (ionChange)="segmentChange()">
-            <ion-segment-button>
-                <ion-label>Company</ion-label>
-            </ion-segment-button>
-            <ion-segment-button>
-                <ion-label>Fiz lico</ion-label>
-            </ion-segment-button>
-        </ion-segment>
+            <form action="#" class="ho-form ho-form-boxed" [formGroup]="registerForm">
+                <ion-card-content>
+                    <ion-label>Форма регистрации</ion-label>
+                    <ion-item>
+                        <ion-label position="floating">Логин</ion-label>
+                        <ion-input formControlName="login"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['login'].errors?.required && !registerForm.controls['login'].pristine">
+                            Введите логин
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Имя</ion-label>
+                        <ion-input formControlName="firstName"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.required && !registerForm.controls['firstName'].pristine">
+                            Введите имя
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Фамилия</ion-label>
+                        <ion-input formControlName="lastName"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required && !registerForm.controls['lastName'].pristine">
+                            Введите фамилию
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Номер телефона</ion-label>
+                        <ion-input formControlName="phoneNumber"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['phoneNumber'].errors?.required && !registerForm.controls['phoneNumber'].pristine">
+                            Введите номер телефона
+                        </div>
+                    </ion-item>
 
 
+                    <ion-item>
+                        <ion-label position="floating">Пароль</ion-label>
+                        <ion-input [type]="'password'" formControlName="password"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['password'].errors?.required && !registerForm.controls['password'].pristine">
+                            необходимо ввести пароль
+                        </div>
+                    </ion-item>
 
-            <ion-card-content *ngIf="isCompany">
-                <ion-label>Fiz lico</ion-label>
-                <ion-item>
-                    <ion-label position="floating">Username</ion-label>
-                    <ion-input></ion-input>
-                </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Подтверждение пароля</ion-label>
+                        <ion-input [type]="'password'" formControlName="repassword"></ion-input>
+                        <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.required && !registerForm.controls['repassword'].pristine">
+                            необходимо подтвердить пароль
+                        </div>
+                        <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.mustMatch && !registerForm.controls['repassword'].pristine">
+                            Пароли должны совпадать
+                        </div>
+                    </ion-item>
+                </ion-card-content>
 
-                <ion-item>
-                    <ion-label position="floating">Password</ion-label>
-                    <ion-input></ion-input>
-                </ion-item>
-            </ion-card-content>
-            <ion-card-content *ngIf="!isCompany">
-                <ion-label>Company</ion-label>
-                <ion-item>
-                    <ion-label position="floating">BIN</ion-label>
-                    <ion-input></ion-input>
-                </ion-item>
+                <ion-button [disabled]="!registerForm.valid" (click)="register()"
+                            [ngClass]="{'disabled' : !registerForm.valid}"
+                            expand="block">Регистрация</ion-button>
 
-                <ion-item>
-                    <ion-label position="floating">Password</ion-label>
-                    <ion-input></ion-input>
-                </ion-item>
-            </ion-card-content>
+                <div style="float: right">
+                    <ion-label>Уже зарегистрированы?</ion-label>
+                    <ion-button size="small" routerDirection="back" routerLink="/" fill="clear">Вход</ion-button>
+                </div>
 
-
-        <ion-button expand="block">Register</ion-button>
-
-      <div style="float: right">
-        <ion-label>Already registered?</ion-label><ion-button size="small" routerDirection="back" routerLink="/" fill="clear">go to login</ion-button>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
+            </form>
+        </ion-card-content>
+    </ion-card>
 
 
 </ion-content>

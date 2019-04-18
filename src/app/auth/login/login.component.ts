@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ToastService} from '../../services/toast.service';
-import {Router} from '@angular/router';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -12,27 +10,23 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
     constructor(
-        private  authService: AuthService, private builder: FormBuilder,
-        private toastService: ToastService, private router: Router
-    ) {
-
-
-    }
+        private  authService: AuthService,
+        private builder: FormBuilder) {}
 
     loginForm: FormGroup;
 
     ngOnInit() {
-
+        this.authService.removeAll();
         this.loginForm = this.builder.group({
-            username: [null, Validators.required],
+            login: [null, Validators.required],
             password: [null, Validators.required]
         });
 
     }
 
     login() {
-        const username = this.loginForm.get('username').value;
+        const login = this.loginForm.get('login').value;
         const password = this.loginForm.get('password').value;
-        this.authService.login(username, password);
+        this.authService.login(login, password);
     }
 }

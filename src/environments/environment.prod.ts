@@ -1,4 +1,7 @@
 export const environment = {
-  apiUrl: 'http://87.255.197.72',
-  production: true
+  apiUrl: 'http://localhost:8080',
+  production: true,
+  apiToken: 'apiToken',
+  tokenPrefix: 'Bearer ',
+  roleName: 'role',
 };

@@ -1,0 +1,35 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {User} from '../models/user';
+import {environment} from '../../../environments/environment';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class UserService {
+
+    constructor(private http: HttpClient) {
+    }
+
+    public getAll(): Observable<User[]> {
+        return this.http.get<User[]>(environment.apiUrl + '/api/users');
+    }
+
+
+    public getById(id: number): Observable<User> {
+        return this.http.get<User>(environment.apiUrl + '/api/users' + `/${id}`);
+    }
+
+    public save(user: User) {
+        return this.http.post<User>(environment.apiUrl + '/api/users', user);
+    }
+
+    public delete(user: User) {
+        return this.http.delete(environment.apiUrl + `/api/users/${user.id}`);
+    }
+
+    public update(user: User) {
+        return this.http.put(environment.apiUrl + `/api/users/${user.id}`, user);
+    }
+}
