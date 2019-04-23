@@ -12,7 +12,9 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {HomePageModule} from './home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ErrorInterceptor} from './shared/interceptors/error';
+import {TokenInterceptor} from './shared/interceptors/token';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,20 @@ import {HttpClientModule} from '@angular/common/http';
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        },
+        {
+            provide: RouteReuseStrategy,
+            useClass: IonicRouteStrategy
+        }
     ],
     bootstrap: [AppComponent]
 })

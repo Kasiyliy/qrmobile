@@ -1,16 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
     constructor(
         private  authService: AuthService,
+        private router: Router,
         private builder: FormBuilder) {}
 
     loginForm: FormGroup;
@@ -22,6 +24,10 @@ export class LoginComponent implements OnInit {
             password: [null, Validators.required]
         });
 
+
+        this.router.events.subscribe(perf => {
+            this.loginForm.reset();
+        });
     }
 
     login() {
@@ -29,4 +35,8 @@ export class LoginComponent implements OnInit {
         const password = this.loginForm.get('password').value;
         this.authService.login(login, password);
     }
+
+    ngOnDestroy(): void {
+    }
+
 }

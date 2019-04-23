@@ -9,27 +9,32 @@ import {environment} from '../../../environments/environment';
 })
 export class UserService {
 
+    fullUrl = environment.apiUrl + '/api/users';
+
     constructor(private http: HttpClient) {
     }
 
     public getAll(): Observable<User[]> {
-        return this.http.get<User[]>(environment.apiUrl + '/api/users');
+        return this.http.get<User[]>(this.fullUrl);
     }
 
+    public currentUser(): Observable<any> {
+        return this.http.post<any>(this.fullUrl + '/current', {});
+    }
 
     public getById(id: number): Observable<User> {
-        return this.http.get<User>(environment.apiUrl + '/api/users' + `/${id}`);
+        return this.http.get<User>(this.fullUrl + `/${id}`);
     }
 
     public save(user: User) {
-        return this.http.post<User>(environment.apiUrl + '/api/users', user);
+        return this.http.post<User>(this.fullUrl, user);
     }
 
     public delete(user: User) {
-        return this.http.delete(environment.apiUrl + `/api/users/${user.id}`);
+        return this.http.delete(this.fullUrl + `/${user.id}`);
     }
 
     public update(user: User) {
-        return this.http.put(environment.apiUrl + `/api/users/${user.id}`, user);
+        return this.http.put(this.fullUrl + `/${user.id}`, user);
     }
 }
