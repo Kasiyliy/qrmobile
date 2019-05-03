@@ -1,0 +1,31 @@
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+<ion-button [routerLink]="'/home/users/'" routerDirection="back">
+  Back
+</ion-button>
+
+
+<ion-card *ngIf="user">
+  <ion-item>
+    <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>
+    <ion-label>{{user.firstName }} {{user.lastName}} </ion-label>
+  </ion-item>
+
+  <ion-card-content>
+    <ion-label>Information</ion-label>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Login:</ion-label>
+        <ion-input type="text" disabled placeholder="Login" [value]="user.login"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Role:</ion-label>
+        <ion-input type="text" disabled placeholder="Role" [value]="user.role.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Phone number:</ion-label>
+        <ion-input type="text" disabled placeholder="Phone number" [value]="user.phoneNumber"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

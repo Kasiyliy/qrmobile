@@ -1,0 +1,26 @@
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+<ion-button [routerLink]="'/home/companies/'">
+  Back
+</ion-button>
+<ion-card>
+  <ion-card-content>
+    <form action="#" class="ho-form ho-form-boxed" [formGroup]="addCompanyForm">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Phone number</ion-label>
+        <ion-input formControlName="phoneNumber" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">BIN</ion-label>
+        <ion-input formControlName="bin" type="number"></ion-input>
+      </ion-item>
+
+      <ion-button [disabled]="loading || !addCompanyForm.valid" expand="block" (click)="addCompany()">Добавить</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

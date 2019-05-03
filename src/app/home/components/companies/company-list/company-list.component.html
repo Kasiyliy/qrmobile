@@ -1,0 +1,30 @@
+<ion-button color="primary" [routerLink]="'/home/companies/new'" routerDirection="root">
+    <ion-icon name="add"></ion-icon>
+</ion-button>
+
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+<ion-list [lines]="'full'" >
+    <ion-item *ngFor="let company of companies">
+        <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>
+
+        <ion-label>
+            <ion-text color="primary" *ngIf="company.user">
+                <h3>Owner: {{company.user.firstName}} {{company.user.lastName}}</h3>
+            </ion-text>
+            <ion-text>
+                <p>
+                    Name: {{company.name}}
+                </p>
+                <p>
+                    Phone number: {{company.phoneNumber}}
+                </p>
+                <p>
+                    BIN: {{company.bin}}
+                </p>
+                <ion-button color="danger" float-right (click)="delete(company)">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-button>
+            </ion-text>
+        </ion-label>
+    </ion-item>
+</ion-list>

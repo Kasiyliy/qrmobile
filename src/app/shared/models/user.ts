@@ -1,3 +1,5 @@
+import {Role} from './role';
+
 export class User {
 
     id: number;
@@ -6,5 +8,5 @@ export class User {
     phoneNumber: string;
     login: string;
     password: string;
-
+    role: Role;
 }

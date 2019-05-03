@@ -1,31 +1,34 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Логистическая компания!</ion-title>
+    <ion-title>Main</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="bg-white" no-margin>
-    <ion-card-content>
-      <h1 margin-bottom>
-        <ion-text color="primary"><strong>Ionic 4 Start Theme Application</strong></ion-text>
-      </h1>
+<ion-content padding >
+  <div *ngIf="user">
+    <ion-card>
+      <ion-item>
+        <ion-icon name="contact" slot="start"></ion-icon>
+        <ion-label>Welcome, {{user.firstName}} {{user.lastName}}!</ion-label>
+      </ion-item>
+    </ion-card>
 
-      <p margin-bottom>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
-        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,
-        dolore?
-      </p>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label>Phone number: {{user.phoneNumber}}</ion-label>
+      </ion-item>
+    </ion-card>
 
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
-        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,
-        dolore?
-      </p>
-    </ion-card-content>
-  </ion-card>
 
+    <ion-card>
+      <ion-item>
+        <ion-icon name="glasses" slot="start"></ion-icon>
+        <ion-label>Login: {{user.login}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
 </ion-content>

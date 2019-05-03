@@ -35,6 +35,8 @@ import {TokenInterceptor} from './shared/interceptors/token';
     providers: [
         StatusBar,
         SplashScreen,
+
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,

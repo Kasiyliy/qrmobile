@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+    loading = false;
+
     constructor(
         private  authService: AuthService,
         private router: Router,
@@ -33,7 +35,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     login() {
         const login = this.loginForm.get('login').value;
         const password = this.loginForm.get('password').value;
-        this.authService.login(login, password);
+        this.loading = true;
+        this.authService.login(login, password).subscribe(perf => {
+            this.loading = false;
+            this.loginForm.reset();
+            this.authService.authorize(perf);
+        }, err => {
+            this.authService.authFail();
+        });
     }
 
     ngOnDestroy(): void {

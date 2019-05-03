@@ -21,19 +21,23 @@ export class AuthService {
                 private userService: UserService) {
     }
 
+
+    authorize = (perf) => {
+        this.authorized.next(true);
+        const token = perf;
+        const payload = jwt_decode(token);
+        localStorage.setItem(environment.apiToken, token);
+        localStorage.setItem(environment.roleName, payload.scopes.authority);
+        this.toastService.presentInfoToast('Авторизовано');
+        this.router.navigate(['home']);
+    }
+
+    authFail = () => {
+        this.toastService.presentDangerToast('Неправильный логин или пароль');
+    }
+
     login(login: string, password: string) {
-        this.http.post(environment.apiUrl + '/login', {login, password}, {responseType: 'text'}).subscribe(perf => {
-            this.authorized.next(true);
-            const token = perf;
-            const payload = jwt_decode(token);
-            localStorage.setItem(environment.apiToken, token);
-            localStorage.setItem(environment.roleName, payload.scopes.authority);
-            this.toastService.presentInfoToast('Авторизовано');
-            this.router.navigate(['home']);
-        }, err => {
-            this.toastService.presentDangerToast('Неправильный логин или пароль');
-            console.log(err);
-        });
+        return this.http.post(environment.apiUrl + '/login', {login, password}, {responseType: 'text'});
     }
 
     public validateLogin(login: string): Observable<User> {

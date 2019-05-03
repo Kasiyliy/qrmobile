@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {HomePage} from './home.page';
 import {HomeRoutingModule} from './home-routing.module';
 import {MainPageModule} from './components/main/main.module';
+import {ErrorsPageModule} from './components/errors/errors.module';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {MainPageModule} from './components/main/main.module';
         FormsModule,
         IonicModule,
         HomeRoutingModule,
-        MainPageModule
+        MainPageModule,
+        ErrorsPageModule
     ],
     declarations: [HomePage]
 })
