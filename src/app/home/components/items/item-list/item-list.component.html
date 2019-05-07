@@ -1,0 +1,27 @@
+<ion-button color="primary" [routerLink]="['/home/items/new']">
+    <ion-icon name="add"></ion-icon>
+</ion-button>
+
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+<ion-list [lines]="'full'">
+    <ion-item *ngFor="let item of items">
+        <ion-icon name="cube" slot="start"></ion-icon>
+
+        <ion-label>
+            <ion-text color="primary" *ngIf="item.company">
+                <h3>Company: {{item.company.name}}</h3>
+            </ion-text>
+            <ion-text>
+                <p>
+                    Name: {{item.name}}
+                </p>
+                <p>
+                    Price: {{item.price}}
+                </p>
+                <ion-button color="danger" float-right (click)="delete(item)">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-button>
+            </ion-text>
+        </ion-label>
+    </ion-item>
+</ion-list>

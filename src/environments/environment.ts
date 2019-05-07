@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  // apiUrl: 'http://207.154.224.71:8080',
-  apiUrl: 'http://localhost:8080',
+  // apiUrl: 'https://logisticserver.tk',
+  apiUrl: 'https://logisticserver.tk',
+  // apiUrl: 'http://localhost:8080',
   production: false,
   apiToken: 'apiToken',
   tokenPrefix: 'Bearer ',

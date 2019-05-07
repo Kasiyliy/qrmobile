@@ -5,32 +5,30 @@ import {CompanyListComponent} from './company-list/company-list.component';
 import {CompanyAddComponent} from './company-add/company-add.component';
 
 const routes: Routes = [
-  {
-    path: '', component: CompaniesPage,
-    children: [
-      {
-        path: 'new', component: CompanyAddComponent, pathMatch: 'full'
-      },
-      {
-        path: '', component: CompanyListComponent
-      },
-      // {
-      //   path: ':id', component: UsersDetailComponent
-      // }
-    ]
-  },
+    {
+        path: '', component: CompaniesPage,
+        children: [
+            {
+                path: '', component: CompanyListComponent
+            },
+            {
+                path: 'new', component: CompanyAddComponent
+            },
+        ]
+    },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
 export class CompaniesRoutingModule implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
