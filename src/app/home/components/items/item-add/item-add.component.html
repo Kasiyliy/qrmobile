@@ -22,6 +22,10 @@
         </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-input  #fileInput (change)="uploadFile($event)"  formControlName="file" type="file"></ion-input>
+      </ion-item>
+
       <ion-button [disabled]="loading || !addItemForm.valid" expand="block" (click)="addItem()">Добавить</ion-button>
     </form>
   </ion-card-content>

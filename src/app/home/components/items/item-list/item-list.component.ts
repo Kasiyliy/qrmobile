@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../../../../shared/models/item';
 import {ItemService} from '../../../../shared/services/item.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
     selector: 'app-item-list',
@@ -8,7 +9,7 @@ import {ItemService} from '../../../../shared/services/item.service';
     styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-
+    imageUrl = environment.apiUrl + '/api/images/';
     loading = false;
     items: Item[] = [];
 

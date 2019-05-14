@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../../shared/services/user.service';
 import {ItemService} from '../../../../shared/services/item.service';
@@ -8,6 +8,7 @@ import {User} from '../../../../shared/models/user';
 import {mergeMap} from 'rxjs/operators';
 import {Company} from '../../../../shared/models/company';
 import {CompanyService} from '../../../../shared/services/company.service';
+import {ImageService} from '../../../../shared/services/image.service';
 
 @Component({
     selector: 'app-item-add',
@@ -16,12 +17,15 @@ import {CompanyService} from '../../../../shared/services/company.service';
 })
 export class ItemAddComponent implements OnInit {
 
+    @ViewChild('fileInput') fileInput;
     addItemForm: FormGroup;
     companies: Company[] = [];
     loading = false;
+    files;
 
     constructor(private companyService: CompanyService,
                 private toastService: ToastService,
+                private imageService: ImageService,
                 private userService: UserService,
                 private itemService: ItemService,
                 private builder: FormBuilder) {
@@ -32,6 +36,7 @@ export class ItemAddComponent implements OnInit {
         this.addItemForm = this.builder.group({
             name: [null, Validators.required],
             company: [null, Validators.required],
+            file: [null],
             price: [null, [
                 Validators.required,
                 Validators.pattern('^[0-9]*$')]
@@ -45,8 +50,13 @@ export class ItemAddComponent implements OnInit {
             this.companies = perf;
             this.loading = false;
         });
-    }
+    };
 
+    uploadFile($event) {
+        if ($event.target.files.length > 0) {
+            this.files = $event.target.files[0];
+        }
+    }
 
     addItem = () => {
         this.loading = true;
@@ -56,8 +66,25 @@ export class ItemAddComponent implements OnInit {
         item.name = this.addItemForm.get('name').value;
 
         this.itemService.save(item).subscribe(perf => {
+            item.id = perf.id;
+            if (this.addItemForm.get('file').value) {
+
+                if (this.files) {
+                    const formData = new FormData();
+                    formData.append('file', this.files);
+                    formData.append('itemId', item.id + '');
+                    this.imageService.save(formData, item.id).subscribe(per => {
+                        console.log(per);
+                        this.addItemForm.reset();
+                    });
+
+                }
+
+            } else {
+                this.addItemForm.reset();
+            }
             this.loading = false;
-            this.addItemForm.reset();
+
             this.toastService.presentInfoToast('Item added');
         }, err => {
             this.loading = false;
@@ -65,6 +92,6 @@ export class ItemAddComponent implements OnInit {
         });
 
         console.log(item);
-    }
+    };
 
 }

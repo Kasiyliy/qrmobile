@@ -98,6 +98,11 @@ export class HomePage implements OnInit {
                 url: '/home/main',
                 icon: 'home'
             },
+            {
+                title: 'Orders',
+                url: '/home/orders',
+                icon: 'cart'
+            },
         ];
         return pages;
     }
