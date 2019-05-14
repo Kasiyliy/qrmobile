@@ -28,12 +28,12 @@ export class AuthService {
         const payload = jwt_decode(token);
         localStorage.setItem(environment.apiToken, token);
         localStorage.setItem(environment.roleName, payload.scopes.authority);
-        this.toastService.presentInfoToast('Авторизовано');
+        this.toastService.presentInfoToast('Authorized!');
         this.router.navigate(['home']);
     }
 
     authFail = () => {
-        this.toastService.presentDangerToast('Неправильный логин или пароль');
+        this.toastService.presentDangerToast('Invalid login or password');
     }
 
     login(login: string, password: string) {
@@ -50,7 +50,7 @@ export class AuthService {
 
     checkThenRedirect() {
         if (!this.validateToken() || !localStorage.getItem(environment.apiToken)) {
-            this.toastService.presentDangerToast('Нужно авторизоваться!');
+            this.toastService.presentDangerToast('Authorization required!');
             this.router.navigate(['/login']);
         }
     }
@@ -118,7 +118,7 @@ export class AuthService {
     public logout() {
         this.authorized.next(false);
         localStorage.clear();
-        this.toastService.presentInfoToast('Вы вышли из системы');
+        this.toastService.presentInfoToast('You logged out!');
         this.router.navigate(['/login']);
     }
 

@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            Регистрация
+            Registration
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -12,67 +12,67 @@
 
             <form action="#" class="ho-form ho-form-boxed" [formGroup]="registerForm">
                 <ion-card-content>
-                    <ion-label>Форма регистрации</ion-label>
+                    <ion-label>Registration form</ion-label>
                     <ion-item>
-                        <ion-label position="floating">Логин</ion-label>
+                        <ion-label position="floating">Username</ion-label>
                         <ion-input formControlName="login"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['login'].errors?.required && !registerForm.controls['login'].pristine">
-                            Введите логин
+                            Enter username
                         </div>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Имя</ion-label>
+                        <ion-label position="floating">First name</ion-label>
                         <ion-input formControlName="firstName"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.required && !registerForm.controls['firstName'].pristine">
-                            Введите имя
+                            Enter name
                         </div>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Фамилия</ion-label>
+                        <ion-label position="floating">Last name</ion-label>
                         <ion-input formControlName="lastName"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required && !registerForm.controls['lastName'].pristine">
-                            Введите фамилию
+                            Enter last name
                         </div>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Номер телефона</ion-label>
+                        <ion-label position="floating">Phone number</ion-label>
                         <ion-input formControlName="phoneNumber"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['phoneNumber'].errors?.required && !registerForm.controls['phoneNumber'].pristine">
-                            Введите номер телефона
+                            Enter phone number
                         </div>
                     </ion-item>
 
 
                     <ion-item>
-                        <ion-label position="floating">Пароль</ion-label>
+                        <ion-label position="floating">Password</ion-label>
                         <ion-input [type]="'password'" formControlName="password"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['password'].errors?.required && !registerForm.controls['password'].pristine">
-                            необходимо ввести пароль
+                            Password is required
                         </div>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label position="floating">Подтверждение пароля</ion-label>
+                        <ion-label position="floating">Password confirmation</ion-label>
                         <ion-input [type]="'password'" formControlName="repassword"></ion-input>
                         <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.required && !registerForm.controls['repassword'].pristine">
-                            необходимо подтвердить пароль
+                            Password is required
                         </div>
                         <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.mustMatch && !registerForm.controls['repassword'].pristine">
-                            Пароли должны совпадать
+                            Password don`t match
                         </div>
                     </ion-item>
                 </ion-card-content>
 
                 <ion-button [disabled]="!registerForm.valid" (click)="register()"
                             [ngClass]="{'disabled' : !registerForm.valid}"
-                            expand="block">Регистрация</ion-button>
+                            expand="block">Register</ion-button>
 
                 <div style="float: right">
-                    <ion-label>Уже зарегистрированы?</ion-label>
-                    <ion-button size="small" routerDirection="back" routerLink="/" fill="clear">Вход</ion-button>
+                    <ion-label>Already registered?</ion-label>
+                    <ion-button size="small" routerDirection="back" routerLink="/" fill="clear">Authorization</ion-button>
                 </div>
 
             </form>

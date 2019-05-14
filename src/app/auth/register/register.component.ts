@@ -64,15 +64,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
         this.authService.validateLogin(user.login).subscribe(perf => {
             this.authService.register(user).subscribe(success => {
-                this.toastService.presentInfoToast('Зарегистрированы!');
+                this.toastService.presentInfoToast('Registered!');
                 this.registerForm.reset();
                 this.router.navigate(['/login']);
             }, err => {
                 console.log(err);
-                this.toastService.presentInfoToast('Произошла ошибка!');
+                this.toastService.presentInfoToast('Error occured!');
             });
         }, err => {
-            this.toastService.presentDangerToast('Такой логин уже существует!');
+            this.toastService.presentDangerToast('Username already exists!');
         });
 
 

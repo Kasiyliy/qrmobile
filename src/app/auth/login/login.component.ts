@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.authService.authorize(perf);
         }, err => {
             this.authService.authFail();
+            this.loading = false;
         });
     }
 
