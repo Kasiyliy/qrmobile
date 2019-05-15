@@ -24,6 +24,8 @@ export class CompanyListComponent implements OnInit {
         this.companyService.getAll().subscribe(perf => {
             this.companies = perf;
             this.loading = false;
+        }, err => {
+            this.loading = false;
         });
     }
 
@@ -31,6 +33,8 @@ export class CompanyListComponent implements OnInit {
         this.loading = true;
         this.companyService.delete(company).subscribe(perf => {
             this.companies = this.companies.filter(c => c.id !== company.id);
+            this.loading = false;
+        }, err => {
             this.loading = false;
         });
     }

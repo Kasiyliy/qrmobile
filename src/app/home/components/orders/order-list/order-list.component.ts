@@ -24,6 +24,8 @@ export class OrderListComponent implements OnInit {
     this.orderService.getAll().subscribe(perf => {
       this.orders = perf;
       this.loading = false;
+    }, err => {
+      this.loading = false;
     });
   }
 
@@ -31,6 +33,8 @@ export class OrderListComponent implements OnInit {
     this.loading = true;
     this.orderService.delete(order).subscribe(perf => {
       this.orders = this.orders.filter(c => c.id !== order.id);
+      this.loading = false;
+    }, err => {
       this.loading = false;
     });
   }

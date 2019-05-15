@@ -25,6 +25,8 @@ export class ItemListComponent implements OnInit {
         this.itemService.getAll().subscribe(perf => {
             this.items = perf;
             this.loading = false;
+        }, err => {
+            this.loading = false;
         });
     };
 
@@ -32,6 +34,8 @@ export class ItemListComponent implements OnInit {
         this.loading = true;
         this.itemService.delete(item).subscribe(perf => {
             this.items = this.items.filter(c => c.id !== item.id);
+            this.loading = false;
+        }, err => {
             this.loading = false;
         });
     };

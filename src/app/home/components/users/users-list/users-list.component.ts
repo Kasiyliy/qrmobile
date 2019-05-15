@@ -24,6 +24,8 @@ export class UsersListComponent implements OnInit {
     this.userService.getAll().subscribe(perf => {
       this.users = perf;
       this.loading = false;
+    }, err => {
+      this.loading = false;
     });
   }
 }

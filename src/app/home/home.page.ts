@@ -99,9 +99,9 @@ export class HomePage implements OnInit {
                 icon: 'home'
             },
             {
-                title: 'Orders',
-                url: '/home/orders',
-                icon: 'cart'
+                title: 'Shops',
+                url: '/home/shops',
+                icon: 'pricetags'
             },
         ];
         return pages;

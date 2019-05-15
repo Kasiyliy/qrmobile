@@ -1,0 +1,14 @@
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+<ion-list [lines]="'full'" >
+  <ion-item *ngFor="let company of companies">
+    <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>
+
+    <ion-label>
+      <ion-text>
+        <p>
+          {{company.name}}
+        </p>
+      </ion-text>
+    </ion-label>
+  </ion-item>
+</ion-list>

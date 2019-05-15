@@ -13,9 +13,11 @@ const routes: Routes = [
             {path: 'items', loadChildren: './components/items/items.module#ItemsPageModule'},
             {path: 'cars', loadChildren: './components/cars/cars.module#CarsPageModule'},
             {path: 'orders', loadChildren: './components/orders/orders.module#OrdersPageModule'},
+            {path: 'shops', loadChildren: './components/shops/shops.module#ShopsPageModule'},
             {path: '', redirectTo: 'main', pathMatch: 'full'},
         ]
     },
+
 
 ];
 
