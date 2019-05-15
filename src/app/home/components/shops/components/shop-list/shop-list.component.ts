@@ -23,7 +23,7 @@ export class ShopListComponent implements OnInit {
     }
 
     fetchAll() {
-        this.companyService.getAll().subscribe(perf => {
+        this.companyService.getOverall().subscribe(perf => {
             this.companies = perf;
             this.loading = false;
         }, err => {

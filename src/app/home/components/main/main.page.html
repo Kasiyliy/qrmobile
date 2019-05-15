@@ -10,22 +10,28 @@
 <ion-content padding >
   <div *ngIf="user">
     <ion-card>
-      <ion-item>
+      <ion-item [lines]="'full'" >
         <ion-icon name="contact" slot="start"></ion-icon>
         <ion-label>Welcome, {{user.firstName}} {{user.lastName}}!</ion-label>
       </ion-item>
     </ion-card>
 
     <ion-card>
-      <ion-item>
+      <ion-item [lines]="'full'" >
         <ion-icon name="call" slot="start"></ion-icon>
         <ion-label>Phone number: {{user.phoneNumber}}</ion-label>
       </ion-item>
     </ion-card>
 
+    <ion-card>
+      <ion-item [lines]="'full'" >
+        <ion-icon name="flash" slot="start"></ion-icon>
+        <ion-label>Role: {{user.role.name}}</ion-label>
+      </ion-item>
+    </ion-card>
 
     <ion-card>
-      <ion-item>
+      <ion-item [lines]="'full'" >
         <ion-icon name="glasses" slot="start"></ion-icon>
         <ion-label>Login: {{user.login}}</ion-label>
       </ion-item>

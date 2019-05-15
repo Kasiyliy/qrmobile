@@ -16,11 +16,9 @@ import {Router, RouterEvent} from '@angular/router';
 export class HomePage implements OnInit {
 
     currentUser: User;
-
     selectedPath = '';
-
     pages = [];
-
+    currentRole = '';
 
     constructor(
         private platform: Platform,
@@ -31,15 +29,26 @@ export class HomePage implements OnInit {
         private router: Router,
         public navCtrl: NavController
     ) {
-
+        this.currentRole = authService.getRole();
         switch (authService.getRole()) {
             case Roles.ROLE_ADMIN: {
                 this.pages = this.getAdminRoutes();
                 break;
             }
             case Roles.ROLE_CLIENT: {
-                this.pages = this.geClientRoutes();
+                this.pages = this.getClientRoutes();
                 break;
+            }
+            case Roles.ROLE_DRIVER: {
+                this.pages = this.getDriverRoutes();
+                break;
+            }
+            case Roles.ROLE_MANAGER: {
+                this.pages = this.getManagerRoutes();
+                break;
+            }
+            default: {
+                this.pages = this.getClientRoutes();
             }
         }
 
@@ -48,13 +57,10 @@ export class HomePage implements OnInit {
                 this.selectedPath = event.url;
             }
         });
-
-
-
         this.initializeApp();
     }
 
-    getAdminRoutes = () => {
+    getAdminRoutes() {
         const pages = [
             {
                 title: 'Main',
@@ -70,6 +76,11 @@ export class HomePage implements OnInit {
                 title: 'Companies',
                 url: '/home/companies',
                 icon: 'people'
+            },
+            {
+                title: 'Drivers',
+                url: '/home/drivers',
+                icon: 'speedometer'
             },
             {
                 title: 'Items',
@@ -90,7 +101,7 @@ export class HomePage implements OnInit {
         return pages;
     }
 
-    geClientRoutes = () => {
+    getClientRoutes() {
 
         const pages = [
             {
@@ -102,6 +113,101 @@ export class HomePage implements OnInit {
                 title: 'Shops',
                 url: '/home/shops',
                 icon: 'pricetags'
+            },
+            {
+                title: 'Histories',
+                url: '/home/histories',
+                icon: 'book'
+            },
+            {
+                title: 'My orders',
+                url: '/home/my-orders',
+                icon: 'cart'
+            },
+            {
+                title: 'Settings',
+                url: '/home/settings',
+                icon: 'settings'
+            },
+        ];
+        return pages;
+    }
+
+
+    getDriverRoutes() {
+
+        const pages = [
+            {
+                title: 'Home',
+                url: '/home/main',
+                icon: 'home'
+            },
+            {
+                title: 'Orders',
+                url: '/home/orders',
+                icon: 'cart'
+            },
+            {
+                title: 'Maps',
+                url: '/home/maps',
+                icon: 'map'
+            },
+            {
+                title: 'My car',
+                url: '/home/cars',
+                icon: 'car'
+            },
+            {
+                title: 'Histories',
+                url: '/home/histories',
+                icon: 'book'
+            },
+            {
+                title: 'Settings',
+                url: '/home/settings',
+                icon: 'settings'
+            },
+        ];
+        return pages;
+    }
+
+    getManagerRoutes() {
+
+        const pages = [
+            {
+                title: 'Home',
+                url: '/home/main',
+                icon: 'home'
+            },
+            {
+                title: 'Orders',
+                url: '/home/orders',
+                icon: 'cart'
+            },
+            {
+                title: 'Companies',
+                url: '/home/companies',
+                icon: 'people'
+            },
+            {
+                title: 'Maps',
+                url: '/home/maps',
+                icon: 'map'
+            },
+            {
+                title: 'Drivers',
+                url: '/home/drivers',
+                icon: 'speedometer'
+            },
+            {
+                title: 'Histories',
+                url: '/home/histories',
+                icon: 'book'
+            },
+            {
+                title: 'Settings',
+                url: '/home/settings',
+                icon: 'settings'
             },
         ];
         return pages;

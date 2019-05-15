@@ -14,6 +14,11 @@ const routes: Routes = [
             {path: 'cars', loadChildren: './components/cars/cars.module#CarsPageModule'},
             {path: 'orders', loadChildren: './components/orders/orders.module#OrdersPageModule'},
             {path: 'shops', loadChildren: './components/shops/shops.module#ShopsPageModule'},
+            {path: 'histories', loadChildren: './components/histories/histories.module#HistoriesPageModule'},
+            {path: 'settings', loadChildren: './components/settings/settings.module#SettingsPageModule'},
+            {path: 'my-orders', loadChildren: './components/my-orders/my-orders.module#MyOrdersPageModule'},
+            {path: 'maps', loadChildren: './components/maps/maps.module#MapsPageModule'},
+            {path: 'drivers', loadChildren: './components/drivers/drivers.module#DriversPageModule'},
             {path: '', redirectTo: 'main', pathMatch: 'full'},
         ]
     },

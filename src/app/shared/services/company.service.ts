@@ -18,6 +18,10 @@ export class CompanyService {
     return this.http.get<Company[]>(this.fullUrl);
   }
 
+  public getOverall(): Observable<Company[]> {
+    return this.http.get<Company[]>(this.fullUrl + '/all');
+  }
+
   public getById(id: number): Observable<Company> {
     return this.http.get<Company>(this.fullUrl + `/${id}`);
   }
