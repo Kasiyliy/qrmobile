@@ -19,6 +19,8 @@ const routes: Routes = [
             {path: 'my-orders', loadChildren: './components/my-orders/my-orders.module#MyOrdersPageModule'},
             {path: 'maps', loadChildren: './components/maps/maps.module#MapsPageModule'},
             {path: 'drivers', loadChildren: './components/drivers/drivers.module#DriversPageModule'},
+            {path: 'my-cars', loadChildren: './components/my-cars/my-cars.module#MyCarsPageModule'},
+            {path: 'manager-items', loadChildren: './components/manager/items/items.module#ItemsPageModule'},
             {path: '', redirectTo: 'main', pathMatch: 'full'},
         ]
     },

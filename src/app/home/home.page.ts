@@ -154,7 +154,7 @@ export class HomePage implements OnInit {
             },
             {
                 title: 'My car',
-                url: '/home/cars',
+                url: '/home/my-cars',
                 icon: 'car'
             },
             {
@@ -193,6 +193,16 @@ export class HomePage implements OnInit {
                 title: 'Maps',
                 url: '/home/maps',
                 icon: 'map'
+            },
+            {
+                title: 'My items',
+                url: '/home/manager-items',
+                icon: 'grid'
+            },
+            {
+                title: 'Cars',
+                url: '/home/cars',
+                icon: 'car'
             },
             {
                 title: 'Drivers',

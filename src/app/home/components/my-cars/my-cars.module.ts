@@ -5,18 +5,19 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {IonicModule} from '@ionic/angular';
 
-import {DriversPage} from './drivers.page';
-import {DriverListComponent} from './driver-list/driver-list.component';
+import {MyCarsPage} from './my-cars.page';
+import {CarListComponent} from './car-list/car-list.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: DriversPage,
-        children: [
-            {path: '', component: DriverListComponent}
-        ]
-    }
-];
+        {
+            path: '',
+            component: MyCarsPage,
+            children: [
+                {path: '', component: CarListComponent}
+            ]
+        }
+    ]
+;
 
 @NgModule({
     imports: [
@@ -25,7 +26,7 @@ const routes: Routes = [
         IonicModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [DriversPage, DriverListComponent]
+    declarations: [MyCarsPage, CarListComponent]
 })
-export class DriversPageModule {
+export class MyCarsPageModule {
 }

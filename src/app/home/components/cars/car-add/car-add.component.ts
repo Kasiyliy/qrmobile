@@ -35,7 +35,6 @@ export class CarAddComponent implements OnInit {
     ngOnInit() {
         this.fetchAll();
         this.addCarForm = this.builder.group({
-            name: [null, Validators.required],
             company: [null, Validators.required],
             plateNumber: [null, Validators.required],
             carType: [null, Validators.required],
@@ -64,7 +63,6 @@ export class CarAddComponent implements OnInit {
     addCar = () => {
         this.loading = true;
         const car = new Car();
-        car.name = this.addCarForm.get('name').value;
         car.company = this.addCarForm.get('company').value;
         car.plateNumber = this.addCarForm.get('plateNumber').value;
         car.carType = this.addCarForm.get('carType').value;

@@ -30,14 +30,18 @@ export class AuthService {
         localStorage.setItem(environment.roleName, payload.scopes.authority);
         this.toastService.presentInfoToast('Authorized!');
         this.router.navigate(['home']);
-    }
+    };
 
     authFail = () => {
         this.toastService.presentDangerToast('Invalid login or password');
-    }
+    };
 
     login(login: string, password: string) {
         return this.http.post(environment.apiUrl + '/login', {login, password}, {responseType: 'text'});
+    }
+
+    current(): any {
+        return this.http.get(environment.apiUrl + '/api/users/current');
     }
 
     public validateLogin(login: string): Observable<User> {

@@ -18,6 +18,10 @@ export class UserService {
         return this.http.get<User[]>(this.fullUrl);
     }
 
+    public getAllDrivers(cId: number): Observable<User[]> {
+        return this.http.get<User[]>(this.fullUrl + '/drivers/' + cId);
+    }
+
     public currentUser(): Observable<any> {
         return this.http.post<any>(this.fullUrl + '/current', {});
     }

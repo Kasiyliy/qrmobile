@@ -5,7 +5,7 @@
 <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 <ion-list [lines]="'full'" >
   <ion-item *ngFor="let car of cars">
-    <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>
+    <ion-icon name="car" slot="start"></ion-icon>
 
     <ion-label>
       <ion-text color="primary" *ngIf="car.user">
@@ -21,9 +21,6 @@
         <p>
           Plate number: {{car.plateNumber}}
         </p>
-        <ion-button color="danger" float-right (click)="delete(car)">
-          <ion-icon name="trash"></ion-icon>
-        </ion-button>
       </ion-text>
     </ion-label>
   </ion-item>
