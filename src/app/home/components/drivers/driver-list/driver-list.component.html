@@ -1,4 +1,10 @@
 <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+<ion-button *ngIf="isDriver" color="primary" [routerLink]="['/home/drivers/add']">
+  <ion-icon name="add"></ion-icon>
+</ion-button>
+
+
 <ion-list [lines]="'full'" >
   <ion-item *ngFor="let user of users">
     <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>

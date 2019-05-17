@@ -1,4 +1,4 @@
-<ion-button color="primary" [routerLink]="'/home/cars/new'" routerDirection="root">
+<ion-button *ngIf="!isAdmin" color="primary" [routerLink]="'/home/cars/new'" routerDirection="root">
   <ion-icon name="add"></ion-icon>
 </ion-button>
 

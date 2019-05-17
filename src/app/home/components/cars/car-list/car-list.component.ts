@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Car} from '../../../../shared/models/car';
 import {CarService} from '../../../../shared/services/car.service';
+import {Roles} from '../../../../shared/models/roles';
+import {AuthService} from '../../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-car-list',
@@ -11,13 +13,19 @@ export class CarListComponent implements OnInit {
 
   loading = false;
   cars: Car[] = [];
-
+  isAdmin = true;
   ngOnInit() {
     this.loading = true;
     this.fetchAll();
   }
 
-  constructor(private carService: CarService) {
+  constructor(private carService: CarService,
+              private authService: AuthService) {
+    if (authService.getRole() === Roles.ROLE_ADMIN) {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
   }
 
   fetchAll = () => {

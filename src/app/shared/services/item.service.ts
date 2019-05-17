@@ -22,6 +22,10 @@ export class ItemService {
         return this.http.get<Item[]>(this.fullUrl + '/company', {params: {ids : ids.join(',')}});
     }
 
+    public getAllByCompanyId(id: number): Observable<Item[]> {
+        return this.http.get<Item[]>(this.fullUrl + '/company/' + id);
+    }
+
     public getById(id: number): Observable<Item> {
         return this.http.get<Item>(this.fullUrl + `/${id}`);
     }

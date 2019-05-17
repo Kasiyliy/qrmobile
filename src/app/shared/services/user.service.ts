@@ -18,8 +18,20 @@ export class UserService {
         return this.http.get<User[]>(this.fullUrl);
     }
 
-    public getAllDrivers(cId: number): Observable<User[]> {
+    public getAllDriversByCompany(cId: number): Observable<User[]> {
         return this.http.get<User[]>(this.fullUrl + '/drivers/' + cId);
+    }
+
+    public getAllDrivers(): Observable<User[]> {
+        return this.http.get<User[]>(this.fullUrl + '/drivers');
+    }
+
+    public getAllClients(): Observable<User[]> {
+        return this.http.get<User[]>(this.fullUrl + '/clients');
+    }
+
+    public getAllManagers(): Observable<User[]> {
+        return this.http.get<User[]>(this.fullUrl + '/managers');
     }
 
     public currentUser(): Observable<any> {
@@ -32,6 +44,10 @@ export class UserService {
 
     public save(user: User) {
         return this.http.post<User>(this.fullUrl, user);
+    }
+
+    public addDriver(user: User) {
+        return this.http.post<User>(this.fullUrl + '/add/driver', user);
     }
 
     public delete(user: User) {

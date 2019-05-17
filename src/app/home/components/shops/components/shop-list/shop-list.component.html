@@ -10,6 +10,12 @@
           {{company.name}}
         </p>
       </ion-text>
+      <ion-text color="secondary">
+        <p>
+          <ion-button fill="outline" slot="end" float-right  [routerLink]="'/home/shops/'+ company.id">View
+          </ion-button>
+        </p>
+      </ion-text>
     </ion-label>
   </ion-item>
 </ion-list>

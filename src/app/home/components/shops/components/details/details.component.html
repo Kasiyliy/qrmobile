@@ -1,0 +1,50 @@
+<ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+<ion-button (click)="backClicked()" >
+  Back
+</ion-button>
+<ion-list [lines]="'full'">
+
+
+  <ion-segment  (ionChange)="changeIsOrder($event)">
+    <ion-segment-button [value]="'order'">
+      <ion-label>Orders</ion-label>
+    </ion-segment-button>
+    <ion-segment-button [value]="'cart'">
+      <ion-label>Cart</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="isOrder" >
+
+    <ion-item *ngFor="let item of items">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-img style="height: 90px; width: auto" [src]="imageUrl + item.id"></ion-img>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="cube" slot="start"></ion-icon>
+
+            <ion-label>
+              <ion-text color="primary" *ngIf="item.company">
+                <h3>Company: {{item.company.name}}</h3>
+              </ion-text>
+              <ion-text>
+                <p>
+                  Name: {{item.name}}
+                </p>
+                <p>
+                  Price: {{item.price}}
+                </p>
+                <ion-button color="danger" float-right>
+                  <ion-icon name="cart"></ion-icon>
+                </ion-button>
+              </ion-text>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+</ion-list>

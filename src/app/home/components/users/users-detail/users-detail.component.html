@@ -1,9 +1,8 @@
 <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
-<ion-button [routerLink]="'/home/users/'" routerDirection="back">
+<ion-button (click)="backClicked()" >
   Back
 </ion-button>
-
 
 <ion-card *ngIf="user">
   <ion-item>

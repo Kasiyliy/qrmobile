@@ -4,11 +4,10 @@ import {UserService} from '../../../../shared/services/user.service';
 import {ItemService} from '../../../../shared/services/item.service';
 import {ToastService} from '../../../../shared/services/toast.service';
 import {Item} from '../../../../shared/models/item';
-import {User} from '../../../../shared/models/user';
-import {mergeMap} from 'rxjs/operators';
 import {Company} from '../../../../shared/models/company';
 import {CompanyService} from '../../../../shared/services/company.service';
 import {ImageService} from '../../../../shared/services/image.service';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-item-add',
@@ -28,7 +27,8 @@ export class ItemAddComponent implements OnInit {
                 private imageService: ImageService,
                 private userService: UserService,
                 private itemService: ItemService,
-                private builder: FormBuilder) {
+                private builder: FormBuilder,
+                private _location: Location) {
     }
 
     ngOnInit() {
@@ -56,6 +56,11 @@ export class ItemAddComponent implements OnInit {
         if ($event.target.files.length > 0) {
             this.files = $event.target.files[0];
         }
+    }
+
+
+    backClicked() {
+        this._location.back();
     }
 
     addItem = () => {

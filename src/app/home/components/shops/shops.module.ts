@@ -7,12 +7,14 @@ import {IonicModule} from '@ionic/angular';
 
 import {ShopsPage} from './shops.page';
 import {ShopListComponent} from './components/shop-list/shop-list.component';
+import {DetailsComponent} from './components/details/details.component';
 
 const routes: Routes = [
     {
         path: '', component: ShopsPage,
         children: [
-            {path: '', component: ShopListComponent}
+            {path: '', component: ShopListComponent},
+            {path: ':id', component: DetailsComponent}
         ]
     }
 ];
@@ -24,7 +26,7 @@ const routes: Routes = [
         IonicModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [ShopsPage, ShopListComponent]
+    declarations: [ShopsPage, ShopListComponent, DetailsComponent]
 })
 export class ShopsPageModule {
 }

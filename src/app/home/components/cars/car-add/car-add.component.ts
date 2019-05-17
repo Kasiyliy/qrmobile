@@ -47,7 +47,7 @@ export class CarAddComponent implements OnInit {
         this.companyService.getAll().pipe(
             mergeMap(perf => {
                 this.companies = perf;
-                return this.userService.getAll();
+                return this.userService.getAllDriversByCompany(this.companies.length > 0 ? this.companies[0].id : 0);
             })
         ).pipe(
             mergeMap(perf => {
@@ -56,6 +56,9 @@ export class CarAddComponent implements OnInit {
             })
         ).subscribe(perf => {
             this.carTypes = perf;
+            this.loading = false;
+        }, err => {
+            this.toastService.presentDangerToast('Error occured!');
             this.loading = false;
         });
     }
@@ -72,7 +75,8 @@ export class CarAddComponent implements OnInit {
             this.addCarForm.reset();
             this.toastService.presentInfoToast('Car added');
         }, err => {
-            this.toastService.presentDangerToast('Error occured!');
+            this.toastService.presentDangerToast('Error occured! It can be problem of plate number uniqueness');
+            this.loading = false;
         });
         console.log(car);
     };

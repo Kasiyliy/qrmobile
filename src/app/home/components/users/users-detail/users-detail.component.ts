@@ -3,6 +3,7 @@ import {User} from '../../../../shared/models/user';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../../shared/services/user.service';
 import {mergeMap} from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-users-detail',
@@ -15,7 +16,8 @@ export class UsersDetailComponent implements OnInit {
     user: User;
     loading = false;
     constructor(private route: ActivatedRoute,
-                private userService: UserService) {
+                private userService: UserService,
+                private _location: Location) {
     }
 
     ngOnInit() {
@@ -34,5 +36,10 @@ export class UsersDetailComponent implements OnInit {
             this.loading = false;
         });
 
+    }
+
+
+    backClicked() {
+        this._location.back();
     }
 }
