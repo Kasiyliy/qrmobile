@@ -19,15 +19,28 @@ export class OrderService {
     }
 
     public getAllByCompanyId(id: number): Observable<Order[]> {
-        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/company') ;
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/company');
     }
 
     public getAllByDriverId(id: number): Observable<Order[]> {
-        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/driver') ;
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/driver');
     }
 
     public getAllByClientId(id: number): Observable<Order[]> {
         return this.http.get<Order[]>(this.fullUrl + '/' + id + '/client');
+    }
+
+
+    public getAllByCompanyIdHistory(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/history/company');
+    }
+
+    public getAllByDriverIdHistory(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/history/driver');
+    }
+
+    public getAllByClientIdHistory(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/history/client');
     }
 
     public getById(id: number): Observable<Order> {
@@ -42,7 +55,7 @@ export class OrderService {
         return this.http.delete(this.fullUrl + `/${order.id}`);
     }
 
-    public update(order: Order) {
-        return this.http.put(this.fullUrl , order);
+    public update(order: Order): Observable<any> {
+        return this.http.put<any>(this.fullUrl + '/' + order.id, order);
     }
 }

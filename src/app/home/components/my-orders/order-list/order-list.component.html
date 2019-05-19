@@ -41,6 +41,19 @@
         <p>
           Done by driver: {{order.completedByDriver? 'Yes' : 'No'}}
         </p>
+        <div float-right >
+          <ion-button (click)="doneByClient(order)" [disabled]="order.completedByClient || !isClient()">
+            <ion-icon name="checkmark" ></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="order.completedByClient" [disabled]="order.completedByDriver || isClient()" (click)="doneByDriver(order)">
+            <ion-icon name="done-all" ></ion-icon>
+          </ion-button>
+
+          <ion-label style="color: green;" *ngIf="order.completedByClient && order.completedByDriver" >
+            Completed
+          </ion-label>
+        </div>
       </ion-text>
     </ion-label>
   </ion-item>
