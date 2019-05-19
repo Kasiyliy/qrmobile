@@ -143,8 +143,8 @@ export class HomePage implements OnInit {
                 icon: 'home'
             },
             {
-                title: 'Orders',
-                url: '/home/orders',
+                title: 'My orders',
+                url: '/home/my-orders',
                 icon: 'cart'
             },
             {

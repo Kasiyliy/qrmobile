@@ -1,4 +1,6 @@
 import {User} from './user';
+import {Company} from './company';
+import {OrderStatus} from './order-status';
 
 export class Order {
 
@@ -11,4 +13,6 @@ export class Order {
     completedByDriver: boolean;
     fromLocation: string;
     toLocation: string;
+    company: Company;
+    status: OrderStatus;
 }

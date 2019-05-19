@@ -1,36 +1,48 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Order} from '../models/order';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class OrderService {
 
-  fullUrl = environment.apiUrl + '/api/orders';
+    fullUrl = environment.apiUrl + '/api/orders';
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  public getAll(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.fullUrl);
-  }
+    public getAll(): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl);
+    }
 
-  public getById(id: number): Observable<Order> {
-    return this.http.get<Order>(this.fullUrl + `/${id}`);
-  }
+    public getAllByCompanyId(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/company') ;
+    }
 
-  public save(order: Order) {
-    return this.http.post<Order>(this.fullUrl, order);
-  }
+    public getAllByDriverId(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/driver') ;
+    }
 
-  public delete(order: Order) {
-    return this.http.delete(this.fullUrl + `/${order.id}`);
-  }
+    public getAllByClientId(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.fullUrl + '/' + id + '/client');
+    }
 
-  public update(order: Order) {
-    return this.http.put(this.fullUrl + `/${order.id}`, order);
-  }
+    public getById(id: number): Observable<Order> {
+        return this.http.get<Order>(this.fullUrl + `/${id}`);
+    }
+
+    public save(order: Order) {
+        return this.http.post<Order>(this.fullUrl, order);
+    }
+
+    public delete(order: Order) {
+        return this.http.delete(this.fullUrl + `/${order.id}`);
+    }
+
+    public update(order: Order) {
+        return this.http.put(this.fullUrl , order);
+    }
 }

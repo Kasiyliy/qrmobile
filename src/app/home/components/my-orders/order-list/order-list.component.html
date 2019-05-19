@@ -1,7 +1,3 @@
-<!--<ion-button color="primary" [routerLink]="'/home/orders/new'" routerDirection="root">-->
-  <!--<ion-icon name="add"></ion-icon>-->
-<!--</ion-button>-->
-
 <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 <ion-list [lines]="'full'" >
   <ion-item *ngFor="let order of orders">
@@ -45,15 +41,6 @@
         <p>
           Done by driver: {{order.completedByDriver? 'Yes' : 'No'}}
         </p>
-        <div float-right >
-          <ion-button *ngIf="!isAdmin" color="primary"  [routerLink]="'/home/orders/' + order.id">
-            <ion-icon name="create"></ion-icon>
-          </ion-button>
-
-          <ion-button color="danger" (click)="delete(order)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
-        </div>
       </ion-text>
     </ion-label>
   </ion-item>

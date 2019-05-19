@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {OrderAddComponent} from './order-add/order-add.component';
 import {OrdersPage} from './orders.page';
 import {OrderListComponent} from './order-list/order-list.component';
+import {OrderEditComponent} from './order-edit/order-edit.component';
 
 const routes: Routes = [
         {
@@ -10,6 +11,9 @@ const routes: Routes = [
             children: [
                 {
                     path: '', component: OrderListComponent
+                },
+                {
+                    path: ':id', component: OrderEditComponent
                 },
                 {
                     path: 'new', component: OrderAddComponent

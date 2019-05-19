@@ -4,27 +4,53 @@
   Back
 </ion-button>
 
-<ion-card *ngIf="user">
-  <ion-item>
-    <ion-icon name="contact" md="md-contact" slot="start"></ion-icon>
-    <ion-label>{{user.firstName }} {{user.lastName}} </ion-label>
-  </ion-item>
+<ion-card>
+  <ion-card-content *ngIf="user">
 
-  <ion-card-content>
-    <ion-label>Information</ion-label>
-    <ion-list>
-      <ion-item>
-        <ion-label stacked>Login:</ion-label>
-        <ion-input type="text" disabled placeholder="Login" [value]="user.login"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Role:</ion-label>
-        <ion-input type="text" disabled placeholder="Role" [value]="user.role.name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Phone number:</ion-label>
-        <ion-input type="text" disabled placeholder="Phone number" [value]="user.phoneNumber"></ion-input>
-      </ion-item>
-    </ion-list>
+    <form action="#" class="ho-form ho-form-boxed" [formGroup]="editForm">
+      <ion-card-content>
+        <ion-label>Details form</ion-label>
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input [disabled]="!isAdmin" formControlName="login" [(ngModel)]="user.login"></ion-input>
+          <ion-text color="danger" class="text-danger" *ngIf="editForm.controls['login'].errors?.required && !editForm.controls['login'].pristine">
+            Enter username
+          </ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">First name</ion-label>
+          <ion-input [disabled]="!isAdmin" formControlName="firstName" [(ngModel)]="user.firstName"></ion-input>
+          <ion-text color="danger" class="text-danger" *ngIf="editForm.controls['firstName'].errors?.required && !editForm.controls['firstName'].pristine">
+            Enter name
+          </ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-select [disabled]="!isAdmin" placeholder="Select One" formControlName="role" [(ngModel)]="user.role" [compareWith]="compareFn">
+            <ion-select-option *ngFor="let role of roles" [value]="role" >{{role.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Last name</ion-label>
+          <ion-input [disabled]="!isAdmin"formControlName="lastName" [(ngModel)]="user.lastName"></ion-input>
+          <ion-text color="danger" class="text-danger" *ngIf="editForm.controls['lastName'].errors?.required && !editForm.controls['lastName'].pristine">
+            Enter last name
+          </ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Phone number</ion-label>
+          <ion-input [disabled]="!isAdmin"formControlName="phoneNumber" [(ngModel)]="user.phoneNumber"></ion-input>
+          <ion-text color="danger" class="text-danger" *ngIf="editForm.controls['phoneNumber'].errors?.required && !editForm.controls['phoneNumber'].pristine">
+            Enter phone number
+          </ion-text>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-button *ngIf="isAdmin" [disabled]="!editForm.valid" (click)="edit()"
+                  [ngClass]="{'disabled' : !editForm.valid}"
+                  expand="block">Edit</ion-button>
+
+    </form>
   </ion-card-content>
 </ion-card>

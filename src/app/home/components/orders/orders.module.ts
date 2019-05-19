@@ -9,6 +9,7 @@ import {OrdersPage} from './orders.page';
 import {OrderAddComponent} from './order-add/order-add.component';
 import {OrderListComponent} from './order-list/order-list.component';
 import {OrdersRoutingModule} from './orders-routing.module';
+import {OrderEditComponent} from './order-edit/order-edit.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {OrdersRoutingModule} from './orders-routing.module';
     declarations: [
         OrdersPage,
         OrderAddComponent,
-        OrderListComponent
+        OrderListComponent,
+        OrderEditComponent
     ]
 })
 export class OrdersPageModule {

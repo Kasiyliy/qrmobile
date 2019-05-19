@@ -16,53 +16,61 @@
                     <ion-item>
                         <ion-label position="floating">Username</ion-label>
                         <ion-input formControlName="login"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['login'].errors?.required && !registerForm.controls['login'].pristine">
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['login'].errors?.required && !registerForm.controls['login'].pristine">
                             Enter username
-                        </div>
+                        </ion-text>
                     </ion-item>
 
                     <ion-item>
                         <ion-label position="floating">First name</ion-label>
                         <ion-input formControlName="firstName"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.required && !registerForm.controls['firstName'].pristine">
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['firstName'].errors?.required && !registerForm.controls['firstName'].pristine">
                             Enter name
-                        </div>
+                        </ion-text>
                     </ion-item>
 
                     <ion-item>
                         <ion-label position="floating">Last name</ion-label>
                         <ion-input formControlName="lastName"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required && !registerForm.controls['lastName'].pristine">
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['lastName'].errors?.required && !registerForm.controls['lastName'].pristine">
                             Enter last name
-                        </div>
+                        </ion-text>
                     </ion-item>
 
                     <ion-item>
                         <ion-label position="floating">Phone number</ion-label>
                         <ion-input formControlName="phoneNumber"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['phoneNumber'].errors?.required && !registerForm.controls['phoneNumber'].pristine">
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['phoneNumber'].errors?.required && !registerForm.controls['phoneNumber'].pristine">
                             Enter phone number
-                        </div>
+                        </ion-text>
                     </ion-item>
 
 
                     <ion-item>
                         <ion-label position="floating">Password</ion-label>
                         <ion-input [type]="'password'" formControlName="password"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['password'].errors?.required && !registerForm.controls['password'].pristine">
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['password'].errors?.required && !registerForm.controls['password'].pristine">
                             Password is required
-                        </div>
+                        </ion-text>
+                        <!--<ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['password'].errors?.pattern && !registerForm.controls['password'].pristine">-->
+                            <!--Password is invalid only latin numbers-->
+                        <!--</ion-text>-->
+                        <ion-text color="danger" class="text-danger" *ngIf="registerForm.controls['password'].hasError('minlength') && !registerForm.controls['password'].pristine">
+                            Password min length is 8
+                        </ion-text>
                     </ion-item>
 
                     <ion-item>
                         <ion-label position="floating">Password confirmation</ion-label>
                         <ion-input [type]="'password'" formControlName="repassword"></ion-input>
-                        <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.required && !registerForm.controls['repassword'].pristine">
+
+                        <ion-text color="danger" *ngIf="registerForm.controls['repassword'].errors?.required && !registerForm.controls['repassword'].pristine" [color]="'danger'">
                             Password is required
-                        </div>
-                        <div class="text-danger" *ngIf="registerForm.controls['repassword'].errors?.mustMatch && !registerForm.controls['repassword'].pristine">
+                        </ion-text>
+
+                        <ion-text color="danger" *ngIf="registerForm.controls['repassword'].errors?.mustMatch && !registerForm.controls['repassword'].pristine">
                             Password don`t match
-                        </div>
+                        </ion-text>
                     </ion-item>
                 </ion-card-content>
 

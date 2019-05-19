@@ -7,6 +7,8 @@ import {UserService} from '../../../../shared/services/user.service';
 import {OrderService} from '../../../../shared/services/order.service';
 import {Order} from '../../../../shared/models/order';
 import {User} from '../../../../shared/models/user';
+import {OrderStatus} from '../../../../shared/models/order-status';
+import {Orders} from '../../../../shared/models/orders';
 
 @Component({
   selector: 'app-order-add',
@@ -57,6 +59,10 @@ export class OrderAddComponent implements OnInit {
     order.description = this.addOrderForm.get('description').value;
     order.fromLocation = this.addOrderForm.get('fromLocation').value;
     order.toLocation = this.addOrderForm.get('toLocation').value;
+    const status = new OrderStatus();
+    status.id = Orders.UNDER_CONSIDERATION_ID;
+    status.name = Orders.UNDER_CONSIDERATION;
+    order.status = status;
 
     this.orderService.save(order).subscribe(perf => {
       this.loading = false;

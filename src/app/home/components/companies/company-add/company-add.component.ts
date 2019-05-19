@@ -57,7 +57,7 @@ export class CompanyAddComponent implements OnInit {
             this.toastService.presentInfoToast('Company added');
         }, err => {
             this.loading = false;
-            this.toastService.presentDangerToast('You already have company!');
+            this.toastService.presentDangerToast('You already have company or this company already exists!');
         });
 
         console.log(company);
