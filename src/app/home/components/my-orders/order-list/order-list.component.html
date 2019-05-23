@@ -42,6 +42,10 @@
           Done by driver: {{order.completedByDriver? 'Yes' : 'No'}}
         </p>
         <div float-right >
+          <ion-button [routerLink]="'/home/my-orders/' + order.id + '/track'" [disabled]="isClient()">
+            <ion-icon name="navigate"></ion-icon>
+          </ion-button>
+
           <ion-button (click)="doneByClient(order)" [disabled]="order.completedByClient || !isClient()">
             <ion-icon name="checkmark" ></ion-icon>
           </ion-button>

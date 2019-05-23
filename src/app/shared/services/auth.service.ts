@@ -40,8 +40,8 @@ export class AuthService {
         return this.http.post(environment.apiUrl + '/login', {login, password}, {responseType: 'text'});
     }
 
-    current(): any {
-        return this.http.get(environment.apiUrl + '/api/users/current');
+    current(): Observable<any> {
+        return this.http.post<any>(environment.apiUrl + '/api/users/current', {});
     }
 
     public validateLogin(login: string): Observable<User> {
