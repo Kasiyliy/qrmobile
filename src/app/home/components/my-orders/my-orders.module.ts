@@ -9,6 +9,9 @@ import {MyOrdersPage} from './my-orders.page';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
 import {OrderListComponent} from './order-list/order-list.component';
 import {TrackMeComponent} from './track-me/track-me.component';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+import {TrackYouComponent} from './track-you/track-you.component';
 
 const routes: Routes = [
     {
@@ -18,6 +21,7 @@ const routes: Routes = [
             {path: '', component: OrderListComponent},
             {path: ':id', component: OrderDetailComponent},
             {path: ':id/track', component: TrackMeComponent},
+            {path: ':id/track/driver', component: TrackYouComponent},
         ]
     }
 ];
@@ -34,7 +38,12 @@ const routes: Routes = [
         MyOrdersPage,
         OrderDetailComponent,
         OrderListComponent,
-        TrackMeComponent
+        TrackMeComponent,
+        TrackYouComponent
+    ],
+    providers: [
+        Geolocation,
+        NativeGeocoder,
     ]
 })
 export class MyOrdersPageModule {

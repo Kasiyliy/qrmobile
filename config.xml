@@ -85,10 +85,14 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-mapbox" spec="^1.2.3">
+        <variable name="ACCESS_TOKEN" value="pk.eyJ1Ijoia2FzeWEiLCJhIjoiY2p2eDhqMGN1MDJoMjQ5bHNxMjg2anVoOCJ9.KImOL8iBBHCIVCHp0SZUSg" />
+    </plugin>
+    <plugin name="cordova-plugin-nativegeocoder" spec="3.2.2">
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
+    </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="4.0.1" />
     <engine name="browser" spec="5.0.4" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />
-    <plugin name="cordova-plugin-geolocation" spec="4.0.1">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
-    </plugin>
 </widget>

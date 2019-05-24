@@ -42,7 +42,11 @@
           Done by driver: {{order.completedByDriver? 'Yes' : 'No'}}
         </p>
         <div float-right >
-          <ion-button [routerLink]="'/home/my-orders/' + order.id + '/track'" [disabled]="isClient()">
+          <ion-button *ngIf="!isClient()" [routerLink]="'/home/my-orders/' + order.id + '/track'" >
+            <ion-icon name="navigate"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="isClient()" [routerLink]="'/home/my-orders/' + order.id + '/track/driver'">
             <ion-icon name="navigate"></ion-icon>
           </ion-button>
 
