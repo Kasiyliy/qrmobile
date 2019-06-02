@@ -6,7 +6,6 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {UserService} from '../../../shared/services/user.service';
 import {AuthService} from '../../../shared/services/auth.service';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Router} from '@angular/router';
 import {ToastService} from '../../../shared/services/toast.service';
 import {Roles} from '../../../shared/models/roles';
 import {Session} from '../../../shared/models/session';
@@ -117,10 +116,10 @@ export class CameraPage implements OnInit {
                                             attendance.altitude = altitude;
                                             attendance.user = this.currentUser;
                                             this.attendanceService.save(attendance).subscribe(result => {
-                                                this.toastService.presentDarkToast('Assigned to Lesson!');
+                                                this.toastService.presentInfoToast('Assigned to Lesson!');
                                             }, error1 => {
                                                 this.toastService
-                                                    .presentSuccessToast('Not assigned! Maybe you already ' +
+                                                    .presentWarningToast('Not assigned! Maybe you already ' +
                                                         'assigned or using same device for assignment! ' + error1.toString());
                                             });
                                         }, err => {
@@ -143,9 +142,6 @@ export class CameraPage implements OnInit {
 
 
                 } else if (status.denied) {
-                    // camera permission was permanently denied
-                    // you must use QRScanner.openSettings() method to guide the user to the settings page
-                    // then they can grant the permission from there
                     this.qrScanner.openSettings();
                 } else {
                     // permission was denied, but not permanently. You can ask for permission again at a later time.
