@@ -1,13 +1,12 @@
 <ion-header>
-  <ion-toolbar  color="primary">
+  <ion-toolbar color="dark">
     <ion-title>
-      Authorization
+      IITU
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
-  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+  <ion-progress-bar color="danger" *ngIf="loading" type="indeterminate"></ion-progress-bar>
   <ion-card>
 
     <ion-card-header >
@@ -25,14 +24,8 @@
         <ion-input [type]="'password'" formControlName="password"></ion-input>
       </ion-item>
 
-      <ion-button [disabled]="loading" expand="block" (click)="login()">Login</ion-button>
-      <div style="float: right; font-size: 10px;">
-        <ion-label>Not registered?</ion-label><ion-button size="small" style="font-size: 10px;" routerLink="/register" fill="clear">Register</ion-button>
-      </div>
+      <ion-button [disabled]="loading" color="danger" expand="block" (click)="login()">Login</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
-
-
-
 </ion-content>

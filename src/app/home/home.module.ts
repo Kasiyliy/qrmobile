@@ -15,9 +15,9 @@ import {ErrorsPageModule} from './components/errors/errors.module';
         IonicModule,
         HomeRoutingModule,
         MainPageModule,
-        ErrorsPageModule
+        ErrorsPageModule,
     ],
-    declarations: [HomePage]
+    declarations: [HomePage],
 })
 export class HomePageModule {
 }

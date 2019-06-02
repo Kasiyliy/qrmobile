@@ -28,7 +28,7 @@ export class AuthService {
         const payload = jwt_decode(token);
         localStorage.setItem(environment.apiToken, token);
         localStorage.setItem(environment.roleName, payload.scopes.authority);
-        this.toastService.presentInfoToast('Authorized!');
+        this.toastService.presentDarkToast('Authorized!');
         this.router.navigate(['home']);
     };
 

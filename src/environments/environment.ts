@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'https://logisticserver.tk',
+  apiUrl: 'https://iituattendance.tk',
   // apiUrl: 'http://localhost:8080',
   production: false,
   apiToken: 'apiToken',

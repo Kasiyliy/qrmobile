@@ -18,6 +18,18 @@ export class ToastService {
         toast.present();
     }
 
+    async presentDarkToast(message: string) {
+        const toast = await this.toastr.create({
+            message: message,
+            showCloseButton: true,
+            duration: 2000,
+            position: 'top',
+            closeButtonText: 'Done',
+            color: 'dark'
+        });
+        toast.present();
+    }
+
     async presentInfoToast(message: string) {
         const toast = await this.toastr.create({
             message: message,

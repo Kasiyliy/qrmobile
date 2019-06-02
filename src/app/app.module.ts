@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
@@ -16,7 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from './shared/interceptors/error';
 import {TokenInterceptor} from './shared/interceptors/token';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
-import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
     declarations: [
@@ -37,10 +37,10 @@ import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
     providers: [
 
         Geolocation,
-        NativeGeocoder,
         StatusBar,
         SplashScreen,
-
+        QRScanner,
+        Geolocation,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         {
             provide: HTTP_INTERCEPTORS,
