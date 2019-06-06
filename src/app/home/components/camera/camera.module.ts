@@ -8,6 +8,7 @@ import {IonicModule} from '@ionic/angular';
 import {CameraPage} from './camera.page';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UniqueDeviceID} from '@ionic-native/unique-device-id/ngx';
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 
 const routes: Routes = [
     {
@@ -26,7 +27,8 @@ const routes: Routes = [
     declarations: [CameraPage],
     providers: [
         Geolocation,
-        UniqueDeviceID
+        UniqueDeviceID,
+        FingerprintAIO,
     ]
 })
 export class CameraPageModule {
