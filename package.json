@@ -32,7 +32,7 @@
     "@types/google-maps": "^3.2.1",
     "build": "0.1.4",
     "cordova-android": "8.0.0",
-    "cordova-browser": "5.0.4",
+    "cordova-browser": "6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-device": "^2.0.2",
